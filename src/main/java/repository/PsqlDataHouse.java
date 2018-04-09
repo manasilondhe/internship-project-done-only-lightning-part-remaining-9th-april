@@ -21,7 +21,7 @@ public class PsqlDataHouse {
 
 	public static int setUserKeytoDB(String sfdcusername, String datetime) {
 		try {
-			DBManager.loadDriver();
+			DBManager.loadDriverTest();
 			int row = DBManager.CreUpDel("insert into sfdcmetadata(datakey,entrydate,status) values('" + sfdcusername
 					+ "','" + datetime + "','false')");
 			DBManager.close();
@@ -36,7 +36,7 @@ public class PsqlDataHouse {
 
 	public static int setMetadataObjtoDB(String sfdcusername, JSONObject jsonobject) {
 		try {
-			DBManager.loadDriver();
+			DBManager.loadDriverTest();
 		
 			int row = DBManager.CreUpDel("update sfdcmetadata set metadata ='" + jsonobject
 					+ "',status='true' where datakey='" + sfdcusername + "' and status='false'");
@@ -52,7 +52,7 @@ public class PsqlDataHouse {
 
 	public static int delteDBEntry(String sfdcusername) {
 		try {
-			DBManager.loadDriver();
+			DBManager.loadDriverTest();
 			int row = DBManager.CreUpDel("delete from sfdcmetadata where datakey='" + sfdcusername + "' and status='false'");
 			DBManager.close();
 			if (row > 0)
@@ -65,7 +65,7 @@ public class PsqlDataHouse {
 	}
 	public static int delAlldata(String sfdcusername) {
 		try {
-			DBManager.loadDriver();
+			DBManager.loadDriverTest();
 			int row = DBManager.CreUpDel("delete from sfdcmetadata where datakey='"+sfdcusername+"'");
 			DBManager.close();
 			if (row > 0)
@@ -85,7 +85,7 @@ public class PsqlDataHouse {
 	public static Response getJsonobjectfromHerokuDB(@QueryParam("sfdcuserid") String sfdcuserid_usrname) {
 		String sfdcusername = sfdcuserid_usrname.split("##")[1];
 		try {
-			DBManager.loadDriver();
+			DBManager.loadDriverTest();
 			ResultSet result = DBManager
 					.fetchQuery("select * from sfdcmetadata where datakey='" + sfdcusername + "' and status='true' order by entrydate desc");
 			if (result.next()) {

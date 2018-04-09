@@ -23,7 +23,7 @@ public class XmlDocumetRes {
 			/*Attr attrType = doc.createAttribute("xmlns");
 			attrType.setValue("http://soap.sforce.com/2006/04/metadata");
 			xmlroot.setAttributeNode(attrType);*/
-			File targetFile = new File("/app/metadataxml/metadata_"
+			File targetFile = new File("C:\\Users\\Admin\\Documents\\workspace 3\\SFDCMetadata_7th april\\metadataxml\\metadata_"
 					+ (new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss").format(new Date()).toString()) + ".xml");
 			StreamResult result = new StreamResult(targetFile);
 			transformer.transform(source, result);

@@ -22,7 +22,7 @@ public class DBManager {
 	public static Connection loadDriverTest() throws URISyntaxException, SQLException {
 		try {
 			Class.forName("org.postgresql.Driver");
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/metadata","postgres", "psql");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/metadata","postgres", "root");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Exception in DBManager....for load driver.." + e);
 		}

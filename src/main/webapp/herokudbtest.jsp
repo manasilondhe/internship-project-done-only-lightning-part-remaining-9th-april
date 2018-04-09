@@ -11,11 +11,11 @@
 </head>
 <body>
 <%
-	Connection con = DBManager.loadDriver();
+	Connection con = DBManager.loadDriverTest();
 	if(con!=null)
 	{
 		out.println("Database connected");
-		PsqlDataHouse.getJsonobjectfromHerokuDB("info.mca2016@gmail.com");
+		
 	}
 %>
 </body>
